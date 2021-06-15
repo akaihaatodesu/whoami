@@ -3,6 +3,8 @@ from discord.ext import commands
 import json
 import random
 
+from discord.ext.commands.converter import MemberConverter
+
 
 with open('setting.json','r',encoding='utf8') as jfile:
     jdata = json.load(jfile)
@@ -34,6 +36,10 @@ async def on_member_remove(member):
     channel = bot.get_channel(834079223802232853)
     await channel.send(f'{member.mention} 離開了! (踢')
 
+@bot.command()
+async def love(ctx):
+    love = random.choice(jdata['hug'])
+    await ctx.send(love)
 
 
 
@@ -45,8 +51,10 @@ async def ping(ctx):
 
 @bot.command()
 async def stomp(ctx):
-    pic = discord.File('D:\\code file\\haaatobot\\tenor.gif')
-    await ctx.send(file = pic)
+    pic = random.choice(jdata['sttomp'])
+    await ctx.send('就那麼想被心心我踩嗎?色小鬼?')
+    await ctx.send(pic)
+   
 
 @bot.command()
 async def food(ctx):
@@ -66,4 +74,4 @@ async def roll(ctx):
 
 
 
-bot.run('ODU0MjMyMDc1MDIwMjcxNjI1.YMg7nQ.ZmdQoI072XuUED_WiGR34dA2BhY')
+bot.run('ODU0MjMyMDc1MDIwMjcxNjI1.YMg7nQ.sjTJFkFULDDBbkKqTIbihpgE_RM')
